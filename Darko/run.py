@@ -4,16 +4,19 @@ from darko import Darko
 app = Flask(__name__)
 darko = Darko()
 
+
 @app.route("/nodes")
 def index():
-    node = [x.name for x in darko.get_all_nodes()]
-    return jsonify({'node': node})
+    node = darko.get_all_nodes()
+    return node
+
 
 @app.route('/create')
 def create():
     data = request.args.get('sentence')
     darko.create(data)
     return jsonify({'status': 'success'})
+
 
 @app.route('/<name>')
 def get_node(name):

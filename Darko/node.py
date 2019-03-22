@@ -11,7 +11,6 @@ class MasterNode:
             raise BaseException("You need just one MasterNode")
         MasterNode.__instance = self
 
-
     def create(self, name):
         return self.__node_control(name)
 
@@ -59,6 +58,7 @@ class MasterNode:
         for value in node.keys:
             yield value
 
+
 class Node:
     nodes = []
 
@@ -91,5 +91,6 @@ class Node:
         else:
             raise ('Parameter should be node instance')
 
+
 if __name__ == "__main__":
-  print ("direct method")
+    print("direct method")

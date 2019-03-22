@@ -1,7 +1,9 @@
 from node import MasterNode
 from edge import Edge
+from serializers import NodeSerializer
 
 __all__ = ['Darko']
+
 
 class Darko:
     """
@@ -37,4 +39,4 @@ class Darko:
         return Edge.get(name)
 
     def get_all_nodes(self):
-        return MasterNode.all()
+        return NodeSerializer(MasterNode.all(), many=True).data()
