@@ -12,7 +12,7 @@ Because Donnie Darko is my favorite movie character.
 
 ### Why use Graph ?
 
-Because, usually we used to common value for each keys.
+Because, we usually use to common value for each keys.
 Like 
 ````
 john:doe
