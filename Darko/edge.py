@@ -15,7 +15,8 @@ class Edge:
     @staticmethod
     def create(name, to_node, from_node):
         if not isinstance(to_node, Node) or not isinstance(from_node, Node):
-            raise BaseException('to_node and from_node is have to Node instance')
+            raise BaseException(
+                'to_node and from_node is have to Node instance')
         if from_node.is_key and name == Edge.KEY:
             raise BaseException('This Node assinged key before')
         edge = Edge.edges.get(name)
@@ -38,5 +39,6 @@ class Edge:
                     return MasterNode.get(e['to'])
         return False
 
+
 if __name__ == "__main__":
-  print ("direct method")
+    print("direct method")

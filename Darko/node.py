@@ -11,6 +11,10 @@ class MasterNode:
             raise BaseException("You need just one MasterNode")
         MasterNode.__instance = self
 
+    @staticmethod
+    def get_master_node():
+        return MasterNode.__instance
+
     def create(self, name):
         return self.__node_control(name)
 
