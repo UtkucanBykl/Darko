@@ -5,7 +5,7 @@ class Config:
 
     __config = None
 
-    def __init__(self, wal=True, wal_path='.'):
+    def __init__(self, wal=True, wal_path='.', test=False):
         if Config.__config:
             raise BaseException(
                 'You have already Config instance. Please use get_config() method for use Darko instance'
@@ -13,6 +13,7 @@ class Config:
         Config.__config = self
         self.wal = wal
         self.wal_path = wal_path
+        self.test = test
 
     @staticmethod
     def get_config():
