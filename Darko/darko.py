@@ -29,7 +29,7 @@ class Darko:
             Darko()
         return Darko.__darko
 
-    @wal()
+    @wal('create')
     def create(self, sentence):
         qs = sentence.split(":")
         to_node = self.__master_node.create(qs[1])
@@ -43,3 +43,7 @@ class Darko:
 
     def get_all_nodes(self):
         return NodeSerializer(MasterNode.all(), many=True).data()
+
+    def delete(self, sentence):
+        qs = sentence.split(":")
+        return Edge.delete(qs[0], qs[1])

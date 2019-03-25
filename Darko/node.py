@@ -1,4 +1,3 @@
-
 __all__ = ['Node', 'MasterNode']
 
 
@@ -61,6 +60,11 @@ class MasterNode:
         node = MasterNode.get(name)
         for value in node.keys:
             yield value
+
+    @staticmethod
+    def delete(name):
+        node = MasterNode.get(name)
+        del node
 
 
 class Node:

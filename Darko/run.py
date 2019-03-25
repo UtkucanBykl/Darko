@@ -17,8 +17,15 @@ def index():
 @app.route('/create')
 def create():
     data = request.args.getlist('sentence')
-    map(lambda x: darko.create(sentence=x), data)
-    return jsonify({'status': 'success'})
+    status = all(list(map(lambda x: darko.create(sentence=x), data)))
+    return jsonify({'status': status})
+
+
+@app.route('/delete')
+def delete():
+    data = request.args.getlist('sentence')
+    status = all(list(map(lambda x: darko.delete(sentence=x), data)))
+    return jsonify({'status': status})
 
 
 @app.route('/<name>')
