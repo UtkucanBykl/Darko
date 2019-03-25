@@ -1,8 +1,9 @@
-from flask import Flask, jsonify, request
-from darko import Darko
-from signal_handlers import SignalHandler
 from config import Config
-from starter import *
+from darko import Darko
+from flask import Flask, jsonify, request
+from signal_handlers import SignalHandler
+from starter import Start
+
 app = Flask(__name__)
 darko = Darko()
 
@@ -15,8 +16,8 @@ def index():
 
 @app.route('/create')
 def create():
-    data = request.args.get('sentence')
-    darko.create(sentence=data)
+    data = request.args.getlist('sentence')
+    map(lambda x: darko.create(sentence=x), data)
     return jsonify({'status': 'success'})
 
 

@@ -1,7 +1,8 @@
-from node import MasterNode
-from edge import Edge
-from serializers import NodeSerializer
 from decorators import wal
+from edge import Edge
+from node import MasterNode
+from serializers import NodeSerializer
+
 __all__ = ['Darko']
 
 

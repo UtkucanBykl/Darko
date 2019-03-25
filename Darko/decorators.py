@@ -12,5 +12,7 @@ def wal():
                 with open(f'{config.wal_path}/wal.txt', 'a') as f:
                     f.write(f'{kwargs.get("sentence")}\n')
             return result
+
         return wrapper
+
     return decorator
