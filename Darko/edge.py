@@ -39,9 +39,8 @@ class Edge:
             for e in edge:
                 if from_node == e['from'] and to_node == e['to']:
                     edge.remove(e)
+                    MasterNode.get(from_node).is_key = False
+                    MasterNode.delete(from_node)
+                    MasterNode.delete(to_node)
                     return True
         return False
-
-
-if __name__ == "__main__":
-    print("direct method")

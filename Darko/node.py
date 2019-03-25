@@ -64,7 +64,10 @@ class MasterNode:
     @staticmethod
     def delete(name):
         node = MasterNode.get(name)
-        del node
+        if not node.is_key and not node.keys:
+            Node.nodes.remove(node)
+            return True
+        return False
 
 
 class Node:
