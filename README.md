@@ -46,7 +46,7 @@ For create key-value
 http://127.0.0.1:12345/create?sentence=key:value
 ````
 Also you can create multiple
-````python
+````
 http:127.0.0.1:12345/create?sentence=key:value&sentence=value:key
 ````
 
