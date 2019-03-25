@@ -13,8 +13,10 @@ class Start:
             config.wal = False
             with open(f'{config.wal_path}/wal.txt', 'r') as f:
                 for line in f.readlines():
-                    if line[0:4] == '-del-':
-                        darko.delete(line[4:])
+                    line.replace('\n', '')
+                    if line[0:5] == '-del-':
+                        print(line[6:])
+                        darko.delete(line[6:])
                     else:
-                        darko.create(line.replace('\n', ''))
+                        darko.create(line)
             config.wal = True

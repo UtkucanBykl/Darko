@@ -10,7 +10,7 @@ def wal(crud_type):
     def decorator(func):
         def wrapper(*args, **kwargs):
             result = func(*args, **kwargs)
-            if config.wal and not config.test:
+            if config.wal and not config.test and result:
                 with open(f'{config.wal_path}/wal.txt', 'a') as f:
                     if crud_type == CREATE:
                         f.write(f'{kwargs.get("sentence")}\n')
