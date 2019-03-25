@@ -22,4 +22,47 @@ doe:george
 So think about it, Why we get memmory address every each 'doe'.
 
 
-### Usage @WIP
+### Usage 
+
+
+First,run project
+````bash
+git clone https://github.com/UtkucanBykl/Darko.git
+cd Darko/Darko
+python run.py
+`````
+If you want close the wal(Write Ahead Log) or change wal directory
+````python
+from config import Config
+config = Config.get_config()
+config.wal = False
+config.wal_path = '../'
+`````
+
+
+
+For create key-value
+````
+http://127.0.0.1:12345/create?sentence=key:value
+````
+Also you can create multiple
+````python
+http:127.0.0.1:12345/create?sentence=key:value&sentence=value:key
+````
+
+For delete key-value
+````
+http://127.0.0.1:12345/delete?sentence=key:value
+````
+
+For retrieve node
+````
+http://127.0.0.1:12345/nodes
+````
+
+For get value of key
+````
+http://127.0.0.1:12345/<key_name>
+````
+
+
