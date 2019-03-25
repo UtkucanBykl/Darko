@@ -39,7 +39,8 @@ class Darko:
         return True
 
     def get(self, name):
-        return Edge.get(name)
+        node = Edge.get(name)
+        return NodeSerializer(node).data()
 
     def get_all_nodes(self):
         return NodeSerializer(MasterNode.all(), many=True).data()

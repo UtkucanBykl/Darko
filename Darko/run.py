@@ -32,7 +32,7 @@ def delete():
 def get_node(name):
     node = darko.get(name)
     if node:
-        return node.name
+        return node
     return 'We dont get anything'
 
 
