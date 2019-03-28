@@ -28,16 +28,20 @@ def delete():
     return jsonify({'status': status})
 
 
-@app.route('/<name>')
+@app.route('/get/<name>')
 def get_node(name):
     node = darko.get(name)
     if node:
         return node
     return 'We dont get anything'
 
-
-if __name__ == "__main__":
+def start():
     signal = SignalHandler()
     signal.save()
     Start.start()
     app.run(host='127.0.0.1', debug=True, port=12345, use_reloader=True)
+
+
+if __name__ == "__main__":
+    start()
+

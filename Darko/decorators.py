@@ -11,7 +11,7 @@ def wal(crud_type):
         def wrapper(*args, **kwargs):
             result = func(*args, **kwargs)
             if config.wal and not config.test and result:
-                with open(f'{config.wal_path}/wal.txt', 'a') as f:
+                with open(f'{config.wal_path}', "a") as f:
                     if crud_type == CREATE:
                         f.write(f'{kwargs.get("sentence")}\n')
                     elif crud_type == DELETE:

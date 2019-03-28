@@ -11,7 +11,7 @@ class Start:
         config = Config.get_config()
         if config.wal:
             config.wal = False
-            with open(f'{config.wal_path}/wal.txt', 'r') as f:
+            with open(f'{config.wal_path}', 'r') as f:
                 for line in f.readlines():
                     line.replace('\n', '')
                     if line[0:5] == '-del-':

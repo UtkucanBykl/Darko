@@ -10,7 +10,7 @@ class SignalHandler:
         self.config = Config.get_config()
 
     def signal_handler(self, sig, frame):
-        with open(f'{self.config.wal_path}/wal.txt', 'w') as f:
+        with open(f'{self.config.wal_path}', 'w') as f:
             f.write('')
         sys.exit(0)
 

@@ -5,7 +5,7 @@ class Config:
 
     __config = None
 
-    def __init__(self, wal=True, wal_path='.', test=False):
+    def __init__(self, wal=True, wal_path='./wal.txt', test=False):
         if Config.__config:
             raise BaseException(
                 'You have already Config instance. Please use get_config() method for use Darko instance'
