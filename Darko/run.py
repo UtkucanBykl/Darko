@@ -35,6 +35,14 @@ def get_node(name):
         return node
     return 'We dont get anything'
 
+
+@app.route('/update')
+def update():
+    data = request.args.getlist('sentence')
+    status = all(list(map(lambda x: darko.update(sentence=x), data)))
+    return jsonify({'status': status})
+
+
 def start():
     signal = SignalHandler()
     signal.save()
@@ -44,4 +52,3 @@ def start():
 
 if __name__ == "__main__":
     start()
-

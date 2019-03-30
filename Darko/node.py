@@ -69,6 +69,13 @@ class MasterNode:
             return True
         return False
 
+    @staticmethod
+    def get_or_create(name):
+        if MasterNode.get(name):
+            return MasterNode.get(name)
+        master_node = MasterNode.get_master_node()
+        return master_node.create(name)
+
 
 class Node:
     nodes = []

@@ -51,3 +51,8 @@ class Darko:
     def delete(self, sentence):
         qs = sentence.split(":")
         return Edge.delete(qs[0], qs[1])
+
+    @wal('UPDATE')
+    def update(self, sentence):
+        qs = sentence.split(':')
+        return Edge.update(qs[0], qs[1])
