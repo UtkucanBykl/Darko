@@ -12,7 +12,8 @@ class Edge:
     @staticmethod
     def create(name, from_node, to_node):
         if not isinstance(to_node, Node) or not isinstance(from_node, Node):
-            raise BaseException('to_node and from_node is have to Node instance')
+            raise BaseException(
+                'to_node and from_node is have to Node instance')
         if from_node.is_key and name == Edge.KEY:
             raise BaseException('This Node assinged key before')
         edge = Edge.edges.get(name)
@@ -39,7 +40,10 @@ class Edge:
             for e in edge:
                 if from_node_name == e['from'] and to_node_name == e['to']:
                     edge.remove(e)
-                    MasterNode.get(from_node_name).is_key = False
+                    from_node = MasterNode.get(from_node_name)
+                    to_node = MasterNode.get(to_node_name)
+                    to_node.keys.remove(from_node)
+                    from_node.is_key = False
                     MasterNode.delete(from_node_name)
                     MasterNode.delete(to_node_name)
                     return True
