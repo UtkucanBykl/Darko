@@ -1,4 +1,4 @@
-## Darko
+## Darko ![Logo](https://img.shields.io/pypi/pyversions/Darko.svg?style=flat-square)
 
 
 
