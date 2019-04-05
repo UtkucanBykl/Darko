@@ -1,10 +1,7 @@
 import json
 from unittest import TestCase, main, skip
 
-from ..config import Config
-from ..darko import Darko
-from ..edge import Edge
-from ..node import MasterNode, Node
+from Darko.Darko import Darko, MasterNode, Node, Edge
 
 
 class DarkoTest(TestCase):

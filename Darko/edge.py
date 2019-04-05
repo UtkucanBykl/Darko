@@ -5,7 +5,7 @@ __all__ = ['Edge']
 
 class Edge:
 
-    edges = {'key': [], 'value': []}
+    edges = {'key': []}
     KEY = 'key'
     VALUE = 'value'
 
@@ -16,9 +16,9 @@ class Edge:
                 'to_node and from_node is have to Node instance')
         if from_node.is_key and name == Edge.KEY:
             raise BaseException('This Node assinged key before')
-        edge = Edge.edges.get(name)
-        edge.append({'to': to_node.name, 'from': from_node.name})
         if name == Edge.KEY:
+            edge = Edge.edges.get(name)
+            edge.append({'to': to_node.name, 'from': from_node.name})
             from_node.is_key = True
         elif name == Edge.VALUE:
             from_node.keys = to_node
