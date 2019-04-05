@@ -21,7 +21,7 @@ class Edge:
         if name == Edge.KEY:
             from_node.is_key = True
         elif name == Edge.VALUE:
-            from_node.values = to_node
+            from_node.keys = to_node
         return True
 
     @staticmethod

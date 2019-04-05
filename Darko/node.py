@@ -103,7 +103,7 @@ class Node:
         return self.__keys
 
     @keys.setter
-    def values(self, node):
+    def keys(self, node):
         if isinstance(node, Node):
             self.keys.append(node)
         else:
