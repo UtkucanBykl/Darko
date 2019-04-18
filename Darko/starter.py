@@ -1,5 +1,5 @@
-from config import Config
 from darko import Darko
+from config import Config
 
 __all__ = ['Start']
 

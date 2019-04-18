@@ -1,5 +1,4 @@
-from node import MasterNode, Node
-
+from node import Node, MasterNode
 __all__ = ['Edge']
 
 

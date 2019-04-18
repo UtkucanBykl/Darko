@@ -8,7 +8,7 @@ class Config:
     def __init__(self, wal=True, wal_path='./wal.txt', test=False):
         if Config.__config:
             raise BaseException(
-                'You have already Config instance. Please use get_config() method for use Darko instance'
+                'You have already Config instance. Please use get_config() method for use DarkoGraph instance'
             )
         Config.__config = self
         self.wal = wal

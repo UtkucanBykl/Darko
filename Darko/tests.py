@@ -1,9 +1,11 @@
 import json
 from unittest import TestCase, main, skip
 
-from Darko.Darko import Darko, MasterNode, Node, Edge
-
-
+from darko import Darko
+from node import MasterNode
+from config import Config
+from serializers import NodeSerializer
+__all__ = ['DarkoTest']
 class DarkoTest(TestCase):
     def setUp(self):
         self.darko = Darko.get_darko()
@@ -13,10 +15,11 @@ class DarkoTest(TestCase):
 
     def test_get(self):
         self.darko.create('utkuu:1')
-        self.assertEqual(self.darko.get('utkuu').name, '1')
+        data = json.loads(self.darko.get('utkuu'))
+        self.assertEqual(data[0]['name'], '1')
 
     def test_get_false(self):
-        self.assertFalse(self.darko.get('1'))
+        self.assertEqual('We found anything', self.darko.get('1'))
 
     @skip
     def test_get_all_nodes(self):

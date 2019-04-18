@@ -1,8 +1,7 @@
+from node import MasterNode
 from decorators import wal
 from edge import Edge
-from node import MasterNode
 from serializers import NodeSerializer
-
 __all__ = ['Darko']
 
 
@@ -17,7 +16,7 @@ class Darko:
     def __init__(self, db_name='default'):
         if Darko.__darko:
             raise BaseException(
-                'You have already Darko instance. Please use get_darko() method for use Darko instance'
+                'You have already DarkoGraph instance. Please use get_darko() method for use DarkoGraph instance'
             )
         Darko.__darko = self
         self._db_name = db_name

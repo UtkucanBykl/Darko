@@ -1,8 +1,9 @@
-from config import Config
-from darko import Darko
-from flask import Flask, jsonify, request
-from signal_handlers import SignalHandler
+from flask import Flask, request
+from flask.json import jsonify
+
 from starter import Start
+from darko import Darko
+from signal_handlers import SignalHandler
 
 app = Flask(__name__)
 darko = Darko()

@@ -1,5 +1,6 @@
 import signal
 import sys
+
 from config import Config
 
 __all__ = ['SignalHandler']

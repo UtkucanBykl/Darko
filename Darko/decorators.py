@@ -1,5 +1,4 @@
 from config import Config
-
 __all__ = ['wal']
 config = Config()
 CREATE = 'CREATE'
