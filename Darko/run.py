@@ -1,6 +1,6 @@
 from flask import Flask, request
 from flask.json import jsonify
-
+import json
 from starter import Start
 from darko import Darko
 from signal_handlers import SignalHandler
@@ -11,38 +11,45 @@ darko = Darko()
 
 @app.route("/nodes")
 def index():
-    node = darko.get_all_nodes()
-    return node
+    node = json.loads(darko.get_all_nodes())
+    return jsonify({'data' :node})
 
 
 @app.route('/create')
 def create():
     data = request.args.getlist('sentence')
-    status = all((map(lambda x: darko.create(sentence=x), data)))
-    return jsonify({'status': status})
+    try:
+        status = all((map(lambda x: darko.create(sentence=x), data)))
+        return jsonify({'status': status})
+    except BaseException as e:
+        return jsonify({'error': str(e)})
 
 
 @app.route('/delete')
 def delete():
     data = request.args.getlist('sentence')
-    status = all((map(lambda x: darko.delete(sentence=x), data)))
-    return jsonify({'status': status})
-
+    try:
+        status = all((map(lambda x: darko.delete(sentence=x), data)))
+        return jsonify({'status': status})
+    except BaseException as e:
+        return jsonify({'error': str(e)})
 
 @app.route('/get/<name>')
 def get_node(name):
     node = darko.get(name)
-    if node:
-        return node
-    return 'We dont get anything'
+    if type(node) == dict:
+        return jsonify({'error' :'We dont get anything'})
+    return jsonify({'data' :json.loads(node)})
 
 
 @app.route('/update')
 def update():
     data = request.args.getlist('sentence')
-    status = all((map(lambda x: darko.update(sentence=x), data)))
-    return jsonify({'status': status})
-
+    try:
+        status = all((map(lambda x: darko.update(sentence=x), data)))
+        return jsonify({'status': status})
+    except BaseException as e:
+        return jsonify({'error': str(e)})
 
 def start():
     signal = SignalHandler()
