@@ -1,4 +1,5 @@
-from node import Node, MasterNode
+from node import MasterNode, Node
+
 __all__ = ['Edge']
 
 
@@ -41,7 +42,8 @@ class Edge:
                     edge.remove(e)
                     from_node = MasterNode.get(from_node_name)
                     to_node = MasterNode.get(to_node_name)
-                    to_node.keys.remove(from_node)
+                    if from_node in to_node.keys:
+                        to_node.keys.remove(from_node)
                     from_node.is_key = False
                     MasterNode.delete(from_node_name)
                     MasterNode.delete(to_node_name)
@@ -51,13 +53,11 @@ class Edge:
     @staticmethod
     def update(from_node_name, to_node_name):
         old_to_node = Edge.get(from_node_name)
-        if old_to_node:
-            print(old_to_node.name)
-            if Edge.delete(from_node_name, old_to_node.name):
-                Edge.create(
-                    Edge.KEY,
-                    MasterNode.get_or_create(from_node_name),
-                    MasterNode.get_or_create(to_node_name),
-                )
-                return True
+        if old_to_node and Edge.delete(from_node_name, old_to_node.name):    
+            Edge.create(
+                Edge.KEY,
+                MasterNode.get_or_create(from_node_name),
+                MasterNode.get_or_create(to_node_name),
+            )
+            return True
         return False

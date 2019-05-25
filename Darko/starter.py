@@ -1,5 +1,5 @@
-from darko import Darko
 from config import Config
+from darko import Darko
 
 __all__ = ['Start']
 
@@ -17,6 +17,8 @@ class Start:
                         line.replace('\n', '')
                         if line[0:5] == '-del-':
                             darko.delete(line[6:])
+                        elif line[0:5] == '-upt-':
+                            darko.update(line[6:])
                         else:
                             darko.create(line)
                 config.wal = True

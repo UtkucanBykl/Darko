@@ -1,8 +1,10 @@
 from config import Config
+
 __all__ = ['wal']
 config = Config()
 CREATE = 'CREATE'
 DELETE = 'DELETE'
+UPDATE = 'UPDATE'
 
 
 def wal(crud_type):
@@ -15,6 +17,8 @@ def wal(crud_type):
                         f.write(f'{kwargs.get("sentence")}\n')
                     elif crud_type == DELETE:
                         f.write(f'-del- {kwargs.get("sentence")}\n')
+                    elif crud_type == UPDATE:
+                        f.write(f'-upt- {kwargs.get("sentence")}\n')
             return result
 
         return wrapper
