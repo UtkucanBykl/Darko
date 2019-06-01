@@ -15,12 +15,15 @@ class Start:
                 with open(f'{config.wal_path}', 'r') as f:
                     for line in f.readlines():
                         line.replace('\n', '')
+                        data = line[6:-1] if '\n' in line else line[6:]
                         if line[0:5] == '-del-':
-                            darko.delete(line[6:])
+                            darko.delete(data)
                         elif line[0:5] == '-upt-':
-                            darko.update(line[6:])
+                            darko.update(data)
                         else:
-                            darko.create(line)
+                            data = line[:-1] if '\n' in line else line
+                            darko.create(data)
+                        print(data)
                 config.wal = True
             except:
                 print('Wal file not found')

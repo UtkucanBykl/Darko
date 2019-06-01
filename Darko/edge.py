@@ -53,7 +53,8 @@ class Edge:
     @staticmethod
     def update(from_node_name, to_node_name):
         old_to_node = Edge.get(from_node_name)
-        if old_to_node and Edge.delete(from_node_name, old_to_node.name):    
+        if old_to_node:
+            Edge.delete(from_node_name, old_to_node.name)    
             Edge.create(
                 Edge.KEY,
                 MasterNode.get_or_create(from_node_name),
