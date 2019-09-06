@@ -43,26 +43,29 @@ config.wal_path = '../'
 
 For create key-value
 ````
-http://127.0.0.1:12345/create?sentence=key:value
+http://127.0.0.1:12345/nodes/
+-> method: POST
+-> body: {"sentence": ["john:doe", "doe:john"]}
 ````
-Also you can create multiple
-````
-http:127.0.0.1:12345/create?sentence=key:value&sentence=value:key
-````
+
 
 For delete key-value
 ````
-http://127.0.0.1:12345/delete?sentence=key:value
+http://127.0.0.1:12345/nodes/
+-> method: DELETE
+-> body: {"sentence": ["john:doe", "doe:john"]}
 ````
 
-For retrieve node
+For list node
 ````
-http://127.0.0.1:12345/nodes
+http://127.0.0.1:12345/nodes/
+-> method: GET
 ````
 
 For get value of key
 ````
-http://127.0.0.1:12345/<key_name>
+http://127.0.0.1:12345/nodes/<key>
+-> method: GET
 ````
 
 
