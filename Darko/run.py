@@ -9,47 +9,44 @@ app = Flask(__name__)
 darko = Darko()
 
 
-@app.route("/nodes")
-def index():
-    node = json.loads(darko.get_all_nodes())
-    return jsonify({'data' :node})
+@app.route('/nodes/', methods=['POST', 'PUT', 'GET', 'PATCH', 'DELETE'])
+def retrieve_create_update():
+    if request.method == 'POST':
+        data = request.json.get('sentence', [])
+        try:
+            status = all((map(lambda x: darko.create(sentence=x), data)))
+            return jsonify({'status': status})
+        except BaseException as e:
+            return jsonify({'error': str(e)})
+    elif request.method == 'GET':
+        node = json.loads(darko.get_all_nodes())
+        return jsonify({'data': node})
+
+    elif request.method in ('PUT', 'PATCH'):
+        try:
+            data = request.json.get('sentence', [])
+            status = all((map(lambda x: darko.update(sentence=x), data)))
+            return jsonify({'status': status})
+        except BaseException as e:
+            return jsonify({'error': str(e)})
+
+    elif request.method == 'DELETE':
+        try:
+            data = request.json.get('sentence', [])
+            status = all((map(lambda x: darko.delete(sentence=x), data)))
+            return jsonify({'status': status})
+        except BaseException as e:
+            return jsonify({'error': str(e)})
+    return {}  # Todo Exceptions
 
 
-@app.route('/create')
-def create():
-    data = request.args.getlist('sentence')
-    try:
-        status = all((map(lambda x: darko.create(sentence=x), data)))
-        return jsonify({'status': status})
-    except BaseException as e:
-        return jsonify({'error': str(e)})
-
-
-@app.route('/delete')
-def delete():
-    data = request.args.getlist('sentence')
-    try:
-        status = all((map(lambda x: darko.delete(sentence=x), data)))
-        return jsonify({'status': status})
-    except BaseException as e:
-        return jsonify({'error': str(e)})
-
-@app.route('/get/<name>')
+@app.route('/nodes/<name>')
 def get_node(name):
     node = darko.get(name)
     if type(node) == dict:
-        return jsonify({'error' :'We dont get anything'})
-    return jsonify({'data' :json.loads(node)})
+        return jsonify({'error': 'We dont get anything'})
+    return jsonify({'data': json.loads(node)})
 
-
-@app.route('/update')
-def update():
-    data = request.args.getlist('sentence')
-    try:
-        status = all((map(lambda x: darko.update(sentence=x), data)))
-        return jsonify({'status': status})
-    except BaseException as e:
-        return jsonify({'error': str(e)})
 
 def start():
     signal = SignalHandler()
