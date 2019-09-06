@@ -48,6 +48,13 @@ http://127.0.0.1:12345/nodes/
 -> body: {"sentence": ["john:doe", "doe:john"]}
 ````
 
+For update key-value
+````
+http://127.0.0.1:12345/nodes/
+-> method: PUT | PATCH
+-> body: {"sentence": ["john:doe", "doe:john"]}
+````
+
 
 For delete key-value
 ````
