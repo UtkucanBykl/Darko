@@ -4,9 +4,11 @@ import json
 from starter import Start
 from darko import Darko
 from signal_handlers import SignalHandler
+from flask_cors import CORS
 
 app = Flask(__name__)
 darko = Darko()
+CORS(app)
 
 
 @app.route("/nodes")
