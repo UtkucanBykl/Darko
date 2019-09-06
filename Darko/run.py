@@ -36,7 +36,7 @@ def retrieve_create_update():
             status = all((map(lambda x: darko.delete(sentence=x), data)))
             return jsonify({'status': status})
         except BaseException as e:
-        return jsonify({'error': str(e)})
+            return jsonify({'error': str(e)})
     return {}  # Todo Exceptions
 
 
